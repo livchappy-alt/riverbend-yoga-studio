@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    background-color: #F7F3EA;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #6B8068;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-family: Georgia, serif;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    background-color: white;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h2,
+h3 {
+    color: #6B8068;
+    font-family: Georgia, serif;
+}
+
+h2 {
+    border-bottom: 2px solid #A9B8B5;
+    padding-bottom: 8px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}
+
+figure {
+    margin: 0;
+    text-align: center;
+}
+
+figcaption {
+    font-style: italic;
+    margin-top: 10px;
+}
+
+article {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 4px solid #A9B8B5;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+form {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid #A9B8B5;
+    border-radius: 8px;
+}
+
+legend {
+    font-weight: bold;
+    color: #6B8068;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #A9B8B5;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    background-color: #6B8068;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #536650;
+}
+
+footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+@media (min-width: 700px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    section {
+        padding: 30px;
+    }
+
+    main {
+        padding: 30px;
+    }
+}
