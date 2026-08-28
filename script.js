@@ -67,3 +67,30 @@ function loadPreferences() {
 });
 
 loadPreferences();
+function validateForm(event) {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("email-error");
+
+    nameError.textContent = "";
+    emailError.textContent = "";
+
+    let valid = true;
+
+    if (name.length < 2) {
+        nameError.textContent = "Please enter your name.";
+        valid = false;
+    }
+
+    if (!email.includes("@")) {
+        emailError.textContent = "Please enter a valid email address.";
+        valid = false;
+    }
+
+    if (!valid) {
+        event.preventDefault();
+    }
+}const form = document.querySelector("form");
+
+form.addEventListener("submit", validateForm);
