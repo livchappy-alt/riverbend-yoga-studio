@@ -43,3 +43,27 @@ const yogaMoments = [
             "<p>" + match.description + "</p>";
     }
 }document.getElementById("recommend-button").addEventListener("click", recommendClass);
+function savePreferences() {
+    const timeChoice = document.getElementById("time-choice").value;
+    const goalChoice = document.getElementById("goal-choice").value;
+
+    localStorage.setItem("yogaTime", timeChoice);
+    localStorage.setItem("yogaGoal", goalChoice);
+}
+
+function loadPreferences() {
+    const savedTime = localStorage.getItem("yogaTime");
+    const savedGoal = localStorage.getItem("yogaGoal");
+
+    if (savedTime) {
+        document.getElementById("time-choice").value = savedTime;
+    }
+
+    if (savedGoal) {
+        document.getElementById("goal-choice").value = savedGoal;
+    }
+}document.getElementById("recommend-button").addEventListener("click", function() {
+    savePreferences();
+});
+
+loadPreferences();
