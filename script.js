@@ -71,15 +71,20 @@ function savePreferences() {
 }
 
 function loadPreferences() {
-    const savedTime = localStorage.getItem("yogaTime");
-    const savedGoal = localStorage.getItem("yogaGoal");
+    const timeChoice = document.getElementById("time-choice");
+    const goalChoice = document.getElementById("goal-choice");
 
-    if (savedTime) {
-        document.getElementById("time-choice").value = savedTime;
-    }
+    if (timeChoice && goalChoice) {
+        const savedTime = localStorage.getItem("yogaTime");
+        const savedGoal = localStorage.getItem("yogaGoal");
 
-    if (savedGoal) {
-        document.getElementById("goal-choice").value = savedGoal;
+        if (savedTime) {
+            timeChoice.value = savedTime;
+        }
+
+        if (savedGoal) {
+            goalChoice.value = savedGoal;
+        }
     }
 }
 
@@ -106,19 +111,25 @@ function validateForm(event) {
 
     if (!valid) {
         event.preventDefault();
+        return;
     }
+
+    alert("Your request has been submitted!");
 }
 
-document.getElementById("recommend-button").addEventListener("click", recommendClass);
+const recommendButton = document.getElementById("recommend-button");
 
-document.getElementById("recommend-button").addEventListener("click", function() {
-    savePreferences();
-});
+if (recommendButton) {
+    recommendButton.addEventListener("click", function() {
+        recommendClass();
+        savePreferences();
+    });
+}
 
-const form = document.querySelector("form");
+const submitButton = document.getElementById("submit-button");
 
-if (form) {
-    form.addEventListener("submit", validateForm);
+if (submitButton) {
+    submitButton.addEventListener("click", validateForm);
 }
 
 loadPreferences();
