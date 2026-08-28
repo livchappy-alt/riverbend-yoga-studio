@@ -38,9 +38,20 @@ const yogaMoments = [
     });
 
     if (match) {
-        recommendation.innerHTML =
-            "<h3>" + match.className + "</h3>" +
-            "<p>" + match.description + "</p>";
+    let classDetails = "";
+
+    if (match.className === "Gentle Yoga") {
+        classDetails = classInfo.gentle;
+    } else if (match.className === "Vinyasa Yoga") {
+        classDetails = classInfo.vinyasa;
+    } else if (match.className === "Restorative Yoga") {
+        classDetails = classInfo.restorative;
+    }
+
+    recommendation.innerHTML =
+        "<h3>" + match.className + "</h3>" +
+        "<p>" + classDetails + "</p>";
+}
     }
 }document.getElementById("recommend-button").addEventListener("click", recommendClass);
 function savePreferences() {
@@ -94,3 +105,8 @@ function validateForm(event) {
 }const form = document.querySelector("form");
 
 form.addEventListener("submit", validateForm);
+const classInfo = {
+    gentle: "Gentle Yoga is a comfortable class for beginners and anyone looking for a slower practice.",
+    vinyasa: "Vinyasa Yoga connects movement and breathing in a flowing practice.",
+    restorative: "Restorative Yoga focuses on relaxation, gentle poses, and mindful breathing."
+};
