@@ -23,7 +23,15 @@ const yogaMoments = [
         className: "Restorative Yoga",
         description: "A slower practice designed to help you relax and reset."
     }
-];function recommendClass() {
+];
+
+const classInfo = {
+    gentle: "Gentle Yoga is a comfortable class for beginners and anyone looking for a slower practice.",
+    vinyasa: "Vinyasa Yoga connects movement and breathing in a flowing practice.",
+    restorative: "Restorative Yoga focuses on relaxation, gentle poses, and mindful breathing."
+};
+
+function recommendClass() {
     const timeChoice = document.getElementById("time-choice").value;
     const goalChoice = document.getElementById("goal-choice").value;
     const recommendation = document.getElementById("recommendation");
@@ -38,22 +46,22 @@ const yogaMoments = [
     });
 
     if (match) {
-    let classDetails = "";
+        let classDetails = "";
 
-    if (match.className === "Gentle Yoga") {
-        classDetails = classInfo.gentle;
-    } else if (match.className === "Vinyasa Yoga") {
-        classDetails = classInfo.vinyasa;
-    } else if (match.className === "Restorative Yoga") {
-        classDetails = classInfo.restorative;
+        if (match.className === "Gentle Yoga") {
+            classDetails = classInfo.gentle;
+        } else if (match.className === "Vinyasa Yoga") {
+            classDetails = classInfo.vinyasa;
+        } else if (match.className === "Restorative Yoga") {
+            classDetails = classInfo.restorative;
+        }
+
+        recommendation.innerHTML =
+            "<h3>" + match.className + "</h3>" +
+            "<p>" + classDetails + "</p>";
     }
-
-    recommendation.innerHTML =
-        "<h3>" + match.className + "</h3>" +
-        "<p>" + classDetails + "</p>";
 }
-    }
-}document.getElementById("recommend-button").addEventListener("click", recommendClass);
+
 function savePreferences() {
     const timeChoice = document.getElementById("time-choice").value;
     const goalChoice = document.getElementById("goal-choice").value;
@@ -73,11 +81,8 @@ function loadPreferences() {
     if (savedGoal) {
         document.getElementById("goal-choice").value = savedGoal;
     }
-}document.getElementById("recommend-button").addEventListener("click", function() {
-    savePreferences();
-});
+}
 
-loadPreferences();
 function validateForm(event) {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
@@ -102,11 +107,18 @@ function validateForm(event) {
     if (!valid) {
         event.preventDefault();
     }
-}const form = document.querySelector("form");
+}
 
-form.addEventListener("submit", validateForm);
-const classInfo = {
-    gentle: "Gentle Yoga is a comfortable class for beginners and anyone looking for a slower practice.",
-    vinyasa: "Vinyasa Yoga connects movement and breathing in a flowing practice.",
-    restorative: "Restorative Yoga focuses on relaxation, gentle poses, and mindful breathing."
-};
+document.getElementById("recommend-button").addEventListener("click", recommendClass);
+
+document.getElementById("recommend-button").addEventListener("click", function() {
+    savePreferences();
+});
+
+const form = document.querySelector("form");
+
+if (form) {
+    form.addEventListener("submit", validateForm);
+}
+
+loadPreferences();
